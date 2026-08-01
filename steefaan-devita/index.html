@@ -576,6 +576,75 @@ a{color:inherit;text-decoration:none}
   .hero-inner{padding-bottom:1rem}
   .card{border:1px solid #999;background:#fff}
 }
+/* ============================================================
+   MOTION: ORNAMEN BATAK YANG HIDUP
+   Motif tenun dan gorga jadi pelaku utama gerakan.
+   ============================================================ */
+
+/* --- rail jadi pita tenun, bukan benang tunggal --- */
+:root{--rail:54px}
+@media(max-width:430px){:root{--rail:36px}}
+.rail-thread,.rail-fill{width:9px}
+.rail-thread{background:repeating-linear-gradient(45deg,var(--garis) 0 2px,transparent 2px 5px)}
+.rail-fill{
+  background:
+    repeating-linear-gradient(45deg,rgba(255,255,255,.85) 0 2px,transparent 2px 5px),
+    linear-gradient(180deg,var(--merah),var(--emas));
+}
+
+/* --- pembatas ulos yang menggambar dirinya --- */
+.ulos{margin:0 auto;max-width:var(--col);padding:0 1.5rem;opacity:.9}
+.ulos svg{width:100%;height:26px;display:block;overflow:visible}
+.ulos path{
+  fill:none;stroke:var(--merah);stroke-width:1.1;
+  stroke-dasharray:1;stroke-dashoffset:1;
+  transition:stroke-dashoffset 1.6s var(--ease);
+}
+.ulos path.sisi{stroke:var(--emas);stroke-width:.9;transition-delay:.25s}
+.ulos.tergambar path{stroke-dashoffset:0}
+
+/* --- garis pemisah diganti gorga yang tumbuh bertahap --- */
+.rule{height:auto;width:auto;background:none;margin:1.6rem auto}
+.rule svg{width:34px;height:34px;display:block;margin:0 auto}
+.rule .bingkai{
+  fill:none;stroke:var(--merah);stroke-width:1.3;
+  stroke-dasharray:1;stroke-dashoffset:1;
+  transition:stroke-dashoffset 1.1s var(--ease);
+}
+.rule .inti{
+  fill:var(--emas);transform-origin:center;transform:scale(0);
+  transition:transform .7s var(--ease) .75s;
+}
+.rule .tangkai{
+  stroke:var(--merah);stroke-width:1;
+  transform:scaleY(0);transform-origin:center;
+  transition:transform .6s var(--ease) .95s;
+}
+.rule.mekar .bingkai{stroke-dashoffset:0}
+.rule.mekar .inti{transform:scale(1)}
+.rule.mekar .tangkai{transform:scaleY(1)}
+
+/* --- kelopak berputar menggantikan serbuk polos --- */
+.mote{
+  width:9px;height:9px;border-radius:60% 0 60% 0;
+  background:var(--merah);animation-name:gugur;
+}
+.mote.emas{background:var(--emas)}
+@keyframes gugur{
+  0%  {transform:translateY(-8vh) translateX(0) rotate(0deg);opacity:0}
+  10% {opacity:.34}
+  50% {transform:translateY(46vh) translateX(26px) rotate(220deg);opacity:.3}
+  90% {opacity:.16}
+  100%{transform:translateY(114vh) translateX(-14px) rotate(520deg);opacity:0}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .ulos path{stroke-dashoffset:0!important}
+  .rule .bingkai{stroke-dashoffset:0!important}
+  .rule .inti{transform:scale(1)!important}
+  .rule .tangkai{transform:scaleY(1)!important}
+}
+@media print{.ulos{display:none}}
 </style>
 </head>
 <body class="locked">
@@ -1491,6 +1560,79 @@ a{color:inherit;text-decoration:none}
       label.textContent = 'Tautan tersalin';
       setTimeout(function(){ label.textContent = teks; }, 1800);
     });
+  })();
+
+  /* ============================================================
+     MOTION: ORNAMEN BATAK YANG HIDUP
+     ============================================================ */
+  (function(){
+
+    /* pathLength="1" membuat dasharray/offset bisa pakai satuan 0..1,
+       jadi panjang jalur sebenarnya tidak perlu diukur. */
+
+    /* ---------- garis pemisah -> gorga yang mekar ---------- */
+    var GORGA_RULE =
+      '<svg viewBox="0 0 34 34" aria-hidden="true">' +
+      '<path class="bingkai" pathLength="1" d="M17 2 L32 17 L17 32 L2 17 Z"/>' +
+      '<path class="inti" d="M17 9 L25 17 L17 25 L9 17 Z"/>' +
+      '<line class="tangkai" x1="17" y1="0" x2="17" y2="34"/></svg>';
+
+    var ioRule = new IntersectionObserver(function(en){
+      en.forEach(function(e){
+        if (!e.isIntersecting) return;
+        e.target.classList.add('mekar');
+        ioRule.unobserve(e.target);
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.rule').forEach(function(r){
+      r.innerHTML = GORGA_RULE;
+      if (reduced) r.classList.add('mekar'); else ioRule.observe(r);
+    });
+
+    /* ---------- pembatas ulos antar bagian ---------- */
+    var ULOS = (function(){
+      var atas = '', bawah = '', tengah = '';
+      for (var x = 0; x <= 100; x += 5) {
+        atas   += (x ? ' L' : 'M') + x + ' ' + (x / 5 % 2 ? 4 : 13);
+        bawah  += (x ? ' L' : 'M') + x + ' ' + (x / 5 % 2 ? 22 : 13);
+      }
+      tengah = 'M0 13 L100 13';
+      /* vector-effect wajib: viewBox diregang mendatar (preserveAspectRatio=none),
+         tanpa ini ketebalan garis ikut teregang dan jadi tidak rata. */
+      var ve = ' vector-effect="non-scaling-stroke" pathLength="1"';
+      return '<svg viewBox="0 0 100 26" preserveAspectRatio="none" aria-hidden="true">' +
+             '<path' + ve + ' d="' + atas + '"/>' +
+             '<path' + ve + ' d="' + bawah + '"/>' +
+             '<path class="sisi"' + ve + ' d="' + tengah + '"/></svg>';
+    })();
+
+    var ioUlos = new IntersectionObserver(function(en){
+      en.forEach(function(e){
+        if (!e.isIntersecting) return;
+        e.target.classList.add('tergambar');
+        ioUlos.unobserve(e.target);
+      });
+    }, { threshold: 0.8 });
+
+    var bagian = [].slice.call(document.querySelectorAll('.shell > section.band'));
+    bagian.slice(1).forEach(function(sec){
+      var u = document.createElement('div');
+      u.className = 'ulos';
+      u.setAttribute('aria-hidden', 'true');
+      u.innerHTML = ULOS;
+      sec.parentNode.insertBefore(u, sec);
+      if (reduced) u.classList.add('tergambar'); else ioUlos.observe(u);
+    });
+
+    /* ---------- kelopak: separuh emas, ukuran & putaran beragam ---------- */
+    document.querySelectorAll('.mote').forEach(function(m, i){
+      if (i % 2) m.classList.add('emas');
+      var s = 6 + Math.random() * 7;
+      m.style.width = s + 'px';
+      m.style.height = s + 'px';
+    });
+
   })();
 
 })();
