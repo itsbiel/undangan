@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#FFFFFF">
+<title>Ronald &amp; Debora — Undangan Pernikahan</title>
+
+<!-- penanda JS aktif. Semua efek reveal digantung ke kelas .js ini, supaya
+     kalau JS diblokir atau gagal, isi undangan tetap terbaca penuh. -->
+<script>document.documentElement.classList.add('js')</script>
+
+<!-- ==== pratinjau saat link dibagikan di WhatsApp / medsos ====
+     ganti url, judul, dan gambar (1200x630 px, wajib URL absolut) -->
+<meta name="description" content="Sabtu, 14 November 2026 — Pemberkatan di HKBP Sudirman dan Pesta Unjuk di Wisma Gorga, Medan.">
+<link rel="canonical" href="https://undangan-kalian.com/ronald-debora">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://undangan-kalian.com/ronald-debora">
+<meta property="og:title" content="Ronald &amp; Debora — Undangan Pernikahan">
+<meta property="og:description" content="Sabtu, 14 November 2026 — Pemberkatan di HKBP Sudirman dan Pesta Unjuk di Wisma Gorga, Medan.">
+<meta property="og:image" content="https://undangan-kalian.com/ronald-debora/preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="id_ID">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- favicon: motif gorga, ditanam langsung supaya tidak butuh file tambahan -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23ffffff'/><path d='M16 3 L29 16 L16 29 L3 16 Z' fill='none' stroke='%23A8352F' stroke-width='2.2'/><path d='M16 10 L22 16 L16 22 L10 16 Z' fill='%23A8801F'/></svg>">
+
+<!-- aktifkan setelah foto utama dipasang, supaya termuat lebih awal:
+<link rel="preload" as="image" href="foto/hero.jpg" fetchpriority="high"> -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- data terstruktur: melengkapi OG tag untuk pratinjau kaya di mesin pencari -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "Pemberkatan Pernikahan Ronald & Debora",
+  "startDate": "2026-11-14T09:00:00+07:00",
+  "endDate": "2026-11-14T17:00:00+07:00",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "description": "Pemberkatan di HKBP Sudirman dan Pesta Unjuk di Wisma Gorga, Medan.",
+  "image": ["https://undangan-kalian.com/ronald-debora/preview.jpg"],
+  "organizer": { "@type": "Organization", "name": "Keluarga Besar Sitorus & Sihombing" },
+  "location": {
+    "@type": "Place",
+    "name": "HKBP Sudirman",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Jl. Jenderal Sudirman No. 12",
+      "addressLocality": "Medan",
+      "addressRegion": "Sumatera Utara",
+      "addressCountry": "ID"
+    }
+  }
+}
+</script>
+
+<!-- tanpa JS: sampul dan semua kontrol interaktif disembunyikan,
+     undangan langsung tampil sebagai halaman statis yang utuh -->
+<noscript><style>
+  .gate,.rail,.motes,.music,.dock,.lens,.scroll-hint{display:none!important}
+  body.locked{overflow:visible!important;height:auto!important}
+  .pinwrap{height:auto}
+  .pin{position:static;height:auto;min-height:60vh}
+</style></noscript>
+
+<style>
+/* ============================================================
+   BONANG MANALU — undangan pernikahan Batak Toba, tema terang
+   Palet  : putih kertas · merah ulos · hitam tinta · emas benang
+            (tiga warna sakral Batak: putih, merah, hitam)
+   Tanda  : benang tenun bergorga di tepi kiri sebagai progress scroll
+   ============================================================ */
+
+:root{
+  --kertas:#FFFFFF;
+  --kertas-2:#F7F8FA;
+  --kertas-3:#EFF1F5;
+  --garis:#E1E4EA;
+  --garis-kuat:#C9CDD6;
+
+  --tinta:#161922;
+  --tinta-2:#5A5F70;
+
+  --merah:#A8352F;
+  --merah-t:#8E2A25;
+  --merah-kabut:rgba(168,53,47,.09);
+  --emas:#A8801F;
+
+  --rail:46px;
+  --col:480px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+
+  --fs-name:clamp(2.9rem,13.5vw,5.2rem);
+  --fs-body:clamp(.92rem,3.6vw,1rem);
+
+  color-scheme:light;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+/* --- kunci overflow horizontal --- */
+html,body{
+  width:100%;max-width:100%;
+  overflow-x:hidden;
+  overflow-x:clip;              /* clip tidak merusak position:sticky */
+  overscroll-behavior-x:none;
+  background:var(--kertas);
+}
+html{scroll-behavior:smooth}
+
+body{
+  color:var(--tinta-2);
+  font-family:'Jost','Avenir Next',system-ui,sans-serif;
+  font-weight:300;
+  font-size:var(--fs-body);
+  line-height:1.85;
+  -webkit-font-smoothing:antialiased;
+}
+body.locked{overflow:hidden;height:100vh}
+
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--merah);color:#fff}
+:focus-visible{outline:2px solid var(--merah);outline-offset:3px}
+
+/* ---------- tipografi ---------- */
+.display{
+  font-family:'Italiana','Didot','Bodoni MT',Georgia,serif;
+  color:var(--tinta);font-weight:400;line-height:1.05;letter-spacing:.02em;
+}
+.eyebrow{
+  font-size:.62rem;letter-spacing:.4em;text-transform:uppercase;
+  color:var(--merah);font-weight:400;
+}
+
+/* ============================================================
+   1. SAMPUL
+   ============================================================ */
+.gate{
+  position:fixed;inset:0;z-index:120;
+  background:var(--kertas);
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;padding:2rem;
+  transition:opacity 1.1s var(--ease),visibility 1.1s;
+}
+.gate::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 34%,var(--merah-kabut),transparent 64%);
+}
+.gate.open{opacity:0;visibility:hidden}
+.gate-frame{position:relative;z-index:1;border:1px solid var(--garis);padding:3.2rem 1.6rem 2.6rem;max-width:330px;width:100%;background:var(--kertas)}
+.gate-frame::before,.gate-frame::after{content:'';position:absolute;width:9px;height:9px;border:1px solid var(--merah)}
+.gate-frame::before{top:-5px;left:-5px;border-right:0;border-bottom:0}
+.gate-frame::after{bottom:-5px;right:-5px;border-left:0;border-top:0}
+
+.gate-names{font-size:clamp(2.2rem,10vw,3rem);margin:1.3rem 0 .2rem}
+.gate-amp{display:block;font-size:.5em;color:var(--merah);margin:.15rem 0}
+.gate-date{font-size:.7rem;letter-spacing:.28em}
+.gate-to{margin-top:2rem;font-size:.7rem;letter-spacing:.14em}
+.gate-guest{
+  display:block;font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:1.45rem;color:var(--tinta);margin-top:.2rem;
+}
+.gate-open{
+  margin-top:1.9rem;border:1px solid var(--merah);color:var(--merah);
+  padding:.85rem 1.9rem;font-size:.64rem;letter-spacing:.26em;text-transform:uppercase;
+  transition:background .45s var(--ease),color .45s var(--ease);
+}
+.gate-open:hover{background:var(--merah);color:#fff}
+
+/* animasi murni CSS — sampul tidak lagi bergantung pada JS untuk tampil */
+.gate .rise{opacity:0;transform:translateY(16px);animation:riseIn .9s var(--ease) forwards}
+.gate .rise:nth-child(1){animation-delay:.15s}
+.gate .rise:nth-child(2){animation-delay:.3s}
+.gate .rise:nth-child(3){animation-delay:.45s}
+.gate .rise:nth-child(4){animation-delay:.6s}
+.gate .rise:nth-child(5){animation-delay:.75s}
+@keyframes riseIn{to{opacity:1;transform:none}}
+
+/* ============================================================
+   2. BENANG TENUN BERGORGA — progress scroll
+   ============================================================ */
+.rail{
+  position:fixed;left:0;top:0;bottom:0;width:var(--rail);
+  z-index:40;pointer-events:none;opacity:0;
+  transition:opacity 1.2s var(--ease) .5s;
+}
+.rail.on{opacity:1}
+.rail-thread,.rail-fill{position:absolute;left:50%;top:0;width:1px;height:100%;transform:translateX(-50%)}
+.rail-thread{background:var(--garis)}
+.rail-fill{
+  background:linear-gradient(180deg,var(--merah),var(--emas));
+  transform:translateX(-50%) scaleY(0);transform-origin:top;will-change:transform;
+}
+.gorga{
+  position:absolute;left:50%;width:19px;height:19px;
+  margin-left:-9.5px;margin-top:-9.5px;
+  opacity:0;transform:scale(.2) rotate(45deg);
+  transition:opacity .7s var(--ease),transform .7s var(--ease);
+}
+.gorga svg{background:var(--kertas);border-radius:50%}
+.gorga .o{fill:var(--kertas);stroke:var(--merah);stroke-width:1.4}
+.gorga .i{fill:var(--emas)}
+.gorga.woven{opacity:1;transform:scale(1) rotate(0)}
+
+/* ============================================================
+   3. TATA LETAK
+   ============================================================ */
+.shell{max-width:var(--col);margin:0 auto;padding-left:var(--rail);position:relative;z-index:5}
+.band{padding:6.2rem 1.5rem}
+.center{text-align:center}
+.rule{width:1px;height:52px;margin:2rem auto;background:linear-gradient(180deg,var(--merah),transparent)}
+
+/* ============================================================
+   4. HERO + PARALLAX
+   ============================================================ */
+.hero{
+  position:relative;min-height:520px;min-height:100svh;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:space-between;
+}
+.hero-top{position:relative;z-index:1;padding:4.2rem 1.5rem 0;text-align:center}
+.hero-date{font-size:.6rem;letter-spacing:.34em;text-transform:uppercase;color:var(--merah)}
+.hero-tick{display:block;width:1px;height:46px;margin:1rem auto 0;background:linear-gradient(180deg,var(--merah),transparent)}
+/* penanda slot foto — hapus <div class="hero-photo"> setelah foto dipasang */
+.hero-photo{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.hero-photo::after{content:'foto utama';font-size:.55rem;letter-spacing:.32em;text-transform:uppercase;color:var(--garis-kuat)}
+.hero-bg{
+  position:absolute;inset:-12% 0;
+  /* gradasi ini cadangan — tampil kalau foto belum ada atau gagal dimuat */
+  background:
+    radial-gradient(ellipse at 26% 20%,rgba(168,53,47,.14),transparent 56%),
+    radial-gradient(ellipse at 78% 68%,rgba(168,128,31,.13),transparent 60%),
+    linear-gradient(158deg,#FFFFFF 0%,#F2F4F8 70%,#EAEDF3 100%);
+  will-change:transform;
+}
+/* foto utama — muncul dengan lembut hanya setelah benar-benar termuat */
+.hero-img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:var(--foto-pos,center 35%);
+  opacity:0;transition:opacity 1.1s var(--ease);
+}
+.hero-img.ok{opacity:1}
+/* saat ada foto: kabut diperkuat supaya nama tetap terbaca, butiran ditipiskan */
+.hero.has-foto .hero-veil{
+  background:linear-gradient(180deg,
+    rgba(255,255,255,.10) 0%,
+    rgba(255,255,255,.30) 40%,
+    rgba(255,255,255,.86) 72%,
+    var(--kertas) 94%);
+}
+.hero.has-foto .hero-grain{opacity:.07}
+.hero-grain{position:absolute;inset:0;opacity:.16;background-image:radial-gradient(rgba(22,25,34,.55) .5px,transparent .5px);background-size:4px 4px}
+.hero-veil{position:absolute;inset:0;background:linear-gradient(180deg,transparent 34%,var(--kertas) 96%)}
+.hero-inner{position:relative;z-index:1;width:100%;padding:0 1.5rem 5.6rem;text-align:center}
+.hero-names{font-size:var(--fs-name);margin:.7rem 0}
+.js .hero-names .word{display:inline-block;opacity:0;transform:translateY(30px) rotate(2deg);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.js .hero-names.lit .word{opacity:1;transform:none}
+.hero-amp{color:var(--merah);font-size:.42em;display:block;margin:.1rem 0}
+.hero-marga{font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--merah);margin-bottom:.4rem}
+.hero-inner p{color:var(--tinta-2)}
+
+.scroll-hint{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);font-size:.56rem;letter-spacing:.3em;text-transform:uppercase;color:var(--tinta-2)}
+.scroll-hint span{display:block;width:1px;height:32px;margin:.6rem auto 0;background:linear-gradient(180deg,var(--merah),transparent);animation:drip 2.4s ease-in-out infinite}
+@keyframes drip{0%{transform:scaleY(.2);opacity:0}40%{opacity:1}100%{transform:scaleY(1);opacity:0}}
+
+/* ============================================================
+   5. MESIN REVEAL
+   Keadaan tersembunyi hanya berlaku saat JS hidup (.js), dan
+   will-change dilepas begitu animasi selesai supaya layer
+   compositor tidak ditahan seumur halaman.
+   ============================================================ */
+[data-anim]{transition:opacity 1s var(--ease),transform 1s var(--ease),filter 1s var(--ease)}
+.js [data-anim]{opacity:0;will-change:opacity,transform}
+.js [data-anim="up"]{transform:translateY(38px)}
+.js [data-anim="down"]{transform:translateY(-28px)}
+.js [data-anim="left"]{transform:translateX(-38px)}
+.js [data-anim="right"]{transform:translateX(38px)}
+.js [data-anim="zoom"]{transform:scale(.9)}
+.js [data-anim="blur"]{filter:blur(9px);transform:translateY(20px)}
+.js [data-anim="mask"]{transform:translateY(26px) scaleY(.96);transform-origin:bottom}
+[data-anim].seen{opacity:1;transform:none;filter:none;will-change:auto}
+
+/* ============================================================
+   6. AYAT — PIN + SCRUB
+   ============================================================ */
+.pinwrap{height:230vh;position:relative}
+.pin{position:sticky;top:0;height:100svh;display:grid;place-items:center;padding:2rem 1.5rem;text-align:center}
+.verse{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.3rem,5.6vw,1.8rem);font-style:italic;line-height:1.72;max-width:24rem}
+.verse .w{color:var(--tinta)}
+.js .verse .w{color:rgba(22,25,34,.14);transition:color .45s linear}
+.js .verse .w.hot{color:var(--tinta)}
+.verse-src{margin-top:1.7rem;font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--merah)}
+
+/* ============================================================
+   7. KELUARGA & MEMPELAI
+   ============================================================ */
+.pair{display:grid;gap:3.2rem;margin-top:2.4rem}
+.person{text-align:center}
+.portrait{
+  width:168px;height:168px;margin:0 auto 1.3rem;border-radius:50%;
+  overflow:hidden;position:relative;border:1px solid var(--garis);
+  background:linear-gradient(150deg,var(--kertas-3),rgba(168,53,47,.16));
+}
+.portrait::after{content:'foto';position:absolute;inset:0;display:grid;place-items:center;font-size:.56rem;letter-spacing:.3em;text-transform:uppercase;color:var(--garis-kuat)}
+.portrait img{width:100%;height:100%;object-fit:cover;position:relative;z-index:1}
+.person-name{font-size:1.75rem;margin-bottom:.15rem}
+.person-marga{font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--merah);margin-bottom:.7rem}
+.person-meta{font-size:.85rem;line-height:1.9}
+.person-of{color:var(--merah);font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;display:block;margin-bottom:.35rem}
+
+.families{border-top:1px solid var(--garis);border-bottom:1px solid var(--garis);padding:1.8rem 0;margin-top:3rem}
+.families p{font-size:.85rem}
+.families strong{display:block;font-family:'Cormorant Garamond',Georgia,serif;font-size:1.35rem;color:var(--tinta);font-weight:400;margin-top:.3rem}
+
+/* ============================================================
+   8. ACARA
+   ============================================================ */
+.card{
+  border:1px solid var(--garis);background:var(--kertas-2);
+  padding:2.2rem 1.4rem;margin-bottom:1.1rem;text-align:center;
+}
+.card-kind{font-size:1.45rem;margin-bottom:.2rem}
+.card-native{font-size:.6rem;letter-spacing:.26em;text-transform:uppercase;color:var(--merah);margin-bottom:1.2rem}
+.card-when{font-size:.88rem;line-height:2}
+.card-time{color:var(--merah);font-family:'Cormorant Garamond',Georgia,serif;font-size:1.3rem;display:block;margin:.45rem 0}
+.card-where{margin-top:1rem;font-size:.84rem;color:var(--tinta)}
+.card-addr{font-size:.77rem;margin-top:.2rem}
+.link-out{display:inline-block;margin-top:1.4rem;border-bottom:1px solid var(--merah);color:var(--merah);font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;padding-bottom:.3rem;transition:color .4s var(--ease),border-color .4s var(--ease)}
+.link-out:hover{color:var(--tinta);border-color:var(--tinta)}
+
+.card-acts{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem 1.5rem;margin-top:1.4rem}
+.card-acts .link-out{margin-top:0}
+
+.count{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.45rem;margin-top:2.2rem}
+.count-cell{border:1px solid var(--garis);padding:.95rem .2rem;min-width:0;background:var(--kertas)}
+.count-num{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.8rem;color:var(--tinta);line-height:1;font-variant-numeric:tabular-nums}
+.count-lab{font-size:.5rem;letter-spacing:.16em;text-transform:uppercase;margin-top:.45rem;color:var(--merah)}
+/* setelah hari-H lewat, papan angka diganti satu kalimat */
+.count.done{display:none}
+.count-done{
+  display:none;margin-top:2.2rem;padding:1.5rem 1rem;
+  border-top:1px solid var(--garis);border-bottom:1px solid var(--garis);
+  font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;
+  font-size:1.35rem;color:var(--merah);line-height:1.5;
+}
+.count-done.on{display:block}
+
+/* ---------- dalihan na tolu ---------- */
+.tolu{display:grid;gap:.6rem;margin-top:2.4rem;text-align:left}
+.tolu-item{border-left:2px solid var(--merah);padding:.5rem 0 .5rem 1rem}
+.tolu-item b{display:block;font-family:'Cormorant Garamond',Georgia,serif;font-size:1.1rem;color:var(--merah);font-weight:400;font-style:italic}
+.tolu-item span{font-size:.8rem}
+
+/* ============================================================
+   9. LINIMASA
+   ============================================================ */
+.story{position:relative;padding-left:1.9rem;margin-top:2.4rem}
+.story::before{content:'';position:absolute;left:5px;top:.6rem;bottom:.6rem;width:1px;background:linear-gradient(180deg,var(--merah),transparent)}
+.beat{position:relative;padding-bottom:2.4rem}
+.beat::before{content:'';position:absolute;left:-1.9rem;top:.55rem;width:11px;height:11px;background:var(--kertas);border:1px solid var(--merah);transform:rotate(45deg)}
+.beat-year{font-size:.58rem;letter-spacing:.3em;color:var(--merah);text-transform:uppercase}
+.beat-head{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.35rem;color:var(--tinta);margin:.3rem 0 .45rem;font-weight:400}
+.beat-body{font-size:.85rem}
+
+/* ============================================================
+   10. GALERI
+   ============================================================ */
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem;margin-top:2rem}
+.shot{position:relative;overflow:hidden;aspect-ratio:3/4;background:linear-gradient(140deg,var(--kertas-3),rgba(168,53,47,.14));border:1px solid var(--garis);min-width:0}
+.shot:nth-child(3){grid-column:span 2;aspect-ratio:16/10}
+.shot::after{content:'foto';position:absolute;inset:0;display:grid;place-items:center;font-size:.54rem;letter-spacing:.3em;text-transform:uppercase;color:var(--garis-kuat)}
+.shot img{width:100%;height:100%;object-fit:cover;position:relative;z-index:1;transition:transform 1.2s var(--ease)}
+.shot:hover img{transform:scale(1.07)}
+/* .live dipasang JS hanya pada slot yang benar-benar berisi foto */
+.shot.live{cursor:zoom-in}
+
+/* ---------- lightbox ---------- */
+.lens{
+  position:fixed;inset:0;z-index:130;display:none;
+  align-items:center;justify-content:center;
+  background:rgba(255,255,255,.97);
+  -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
+}
+.lens.on{display:flex}
+.lens-img{max-width:90vw;max-height:76vh;object-fit:contain;box-shadow:0 14px 44px rgba(22,25,34,.16)}
+.lens-shut,.lens-prev,.lens-next{
+  position:absolute;width:44px;height:44px;border-radius:50%;
+  border:1px solid var(--garis);background:var(--kertas);color:var(--merah);
+  display:grid;place-items:center;
+  box-shadow:0 2px 10px rgba(22,25,34,.07);
+  transition:border-color .35s var(--ease)
+}
+.lens-shut:hover,.lens-prev:hover,.lens-next:hover{border-color:var(--merah)}
+.lens-shut{top:1rem;right:1rem}
+.lens-prev{left:.7rem;top:50%;transform:translateY(-50%)}
+.lens-next{right:.7rem;top:50%;transform:translateY(-50%)}
+.lens svg{width:16px;height:16px;fill:currentColor}
+.lens-count{
+  position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);
+  font-size:.58rem;letter-spacing:.3em;color:var(--tinta-2);
+}
+
+/* ============================================================
+   11. UCAPAN
+   ============================================================ */
+.field{margin-bottom:.95rem;text-align:left}
+.field label{display:block;font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:var(--merah);margin-bottom:.45rem}
+.field input,.field textarea,.field select{
+  width:100%;max-width:100%;background:var(--kertas);
+  border:1px solid var(--garis-kuat);color:var(--tinta);
+  padding:.78rem .85rem;font-family:inherit;font-size:.9rem;font-weight:300;
+  transition:border-color .35s var(--ease),box-shadow .35s var(--ease);
+}
+.field input::placeholder,.field textarea::placeholder{color:var(--garis-kuat)}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--merah);box-shadow:0 0 0 3px var(--merah-kabut);outline:none}
+.field textarea{resize:vertical;min-height:94px}
+.field select{appearance:none;cursor:pointer}
+.send{width:100%;border:1px solid var(--merah);color:var(--merah);padding:.88rem;font-size:.62rem;letter-spacing:.26em;text-transform:uppercase;transition:background .45s var(--ease),color .45s var(--ease)}
+.send:hover{background:var(--merah);color:#fff}
+.send[disabled]{opacity:.5;cursor:default}
+.status{min-height:1.2rem;margin-top:.7rem;font-size:.76rem;text-align:center;color:var(--tinta-2)}
+.status.bad{color:var(--merah)}
+.notes-empty{font-size:.82rem;text-align:center;padding:1.4rem 0;color:var(--garis-kuat)}
+
+/* jebakan bot: harus tetap kosong. Disembunyikan tanpa display:none
+   supaya bot pengisi-otomatis tetap melihatnya sebagai isian nyata. */
+.hp{position:absolute!important;left:-9999px!important;top:auto!important;width:1px;height:1px;overflow:hidden}
+
+.notes{margin-top:2.2rem;max-height:330px;overflow-y:auto;text-align:left}
+.note{border-bottom:1px solid var(--garis);padding:.95rem 0}
+.note:last-child{border-bottom:0}
+.note-from{color:var(--tinta);font-size:.85rem}
+.note-tag{color:var(--merah);font-size:.53rem;letter-spacing:.18em;text-transform:uppercase;margin-left:.45rem}
+.note-body{font-size:.84rem;margin-top:.25rem}
+.note.fresh{animation:enter .7s var(--ease)}
+@keyframes enter{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+/* ---------- amplop: satu rekening ---------- */
+.amplop{
+  border-top:1px solid var(--garis);
+  border-bottom:1px solid var(--garis);
+  padding:2.6rem 0;margin-top:2.4rem;
+}
+.bank{--bank:#0060AF;max-width:320px;margin:0 auto;text-align:center}
+
+.bank-logo{
+  background:var(--bank);border-radius:10px;
+  aspect-ratio:16/7;display:grid;place-items:center;
+  padding:1.1rem 1.5rem;overflow:hidden;
+}
+.bank-logo img{max-height:100%;max-width:100%;object-fit:contain}
+.bank-mark{
+  font-family:'Jost',sans-serif;font-weight:500;
+  font-size:clamp(1.6rem,7vw,2.1rem);letter-spacing:.08em;color:#fff;
+}
+.bank.has-logo .bank-mark{display:none}
+
+.bank-owner{margin-top:1.15rem;font-size:.9rem;color:var(--tinta-2)}
+.bank-no{
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:1.95rem;color:var(--tinta);letter-spacing:.05em;
+  margin:.1rem 0 1.25rem;font-variant-numeric:tabular-nums;word-break:break-all;
+}
+.copy-btn{
+  display:inline-flex;align-items:center;gap:.55rem;
+  background:var(--merah);color:#fff;border-radius:4px;
+  padding:.72rem 1.35rem;font-size:.74rem;letter-spacing:.04em;
+  transition:background .35s var(--ease);
+}
+.copy-btn:hover{background:var(--merah-t)}
+.copy-btn svg{width:14px;height:14px;fill:currentColor;flex:none}
+
+/* ============================================================
+   12. PENUTUP + BERBAGI
+   ============================================================ */
+.closing{padding:7rem 1.5rem 9rem;text-align:center}
+.closing-horas{font-family:'Italiana',Georgia,serif;font-size:clamp(2.6rem,13vw,4rem);color:var(--merah);letter-spacing:.12em;margin:1.4rem 0 .6rem}
+.closing-names{font-size:clamp(1.7rem,7.5vw,2.4rem);margin:.4rem 0 1.2rem}
+
+.share{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;margin-top:2.4rem}
+.share button{
+  display:inline-flex;align-items:center;gap:.5rem;
+  border:1px solid var(--garis-kuat);color:var(--tinta-2);border-radius:4px;
+  padding:.65rem 1.2rem;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;
+  transition:border-color .35s var(--ease),color .35s var(--ease);
+}
+.share button:hover{border-color:var(--merah);color:var(--merah)}
+.share svg{width:13px;height:13px;fill:currentColor;flex:none}
+
+/* ============================================================
+   13. DOK + MUSIK
+   ============================================================ */
+.dock{
+  position:fixed;bottom:0;left:0;right:0;z-index:60;
+  padding:.65rem .8rem calc(.65rem + env(safe-area-inset-bottom));
+  background:var(--kertas);
+  border-top:1px solid var(--garis);
+  box-shadow:0 -8px 24px rgba(22,25,34,.05);
+  transform:translateY(115%);transition:transform .8s var(--ease);
+  overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;
+}
+.dock::-webkit-scrollbar{display:none}
+.dock.on{transform:none}
+.dock-in{display:flex;gap:.3rem;margin:0 auto;width:max-content}
+.dock a{font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;padding:.45rem .55rem;color:var(--tinta-2);white-space:nowrap;transition:color .35s var(--ease)}
+.dock a:hover,.dock a.here{color:var(--merah)}
+
+.music{
+  position:fixed;right:.9rem;top:.9rem;z-index:70;width:38px;height:38px;border-radius:50%;
+  border:1px solid var(--garis);display:grid;place-items:center;
+  background:rgba(255,255,255,.85);backdrop-filter:blur(6px);
+  box-shadow:0 2px 10px rgba(22,25,34,.07);
+  opacity:0;transform:scale(.7);transition:opacity .8s var(--ease),transform .8s var(--ease);
+}
+.music.on{opacity:1;transform:none}
+.music svg{width:14px;height:14px;fill:var(--merah)}
+.music.playing svg{animation:spin 4s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ---------- serbuk halus ---------- */
+.motes{position:fixed;inset:0;z-index:2;pointer-events:none;overflow:hidden}
+.mote{position:absolute;top:-6vh;width:3px;height:3px;border-radius:50%;background:var(--merah);animation:fall linear infinite}
+@keyframes fall{
+  0%{transform:translateY(-6vh) translateX(0);opacity:0}
+  12%{opacity:.3}
+  88%{opacity:.14}
+  100%{transform:translateY(112vh) translateX(34px);opacity:0}
+}
+
+/* ============================================================
+   14. RESPONSIF & AKSESIBILITAS
+   ============================================================ */
+@media(min-width:600px){
+  .pair{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.8rem}
+}
+@media(max-width:430px){
+  :root{--rail:30px}
+  .band{padding:5rem 1.1rem}
+  .count-num{font-size:1.5rem}
+}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
+  [data-anim]{opacity:1!important;transform:none!important;filter:none!important}
+  .gate .rise{opacity:1!important;transform:none!important}
+  .js .hero-names .word{opacity:1!important;transform:none!important}
+  .motes{display:none}
+  .verse .w{color:var(--tinta)!important}
+}
+
+/* ============================================================
+   15. CETAK — sebagian tamu mencetak undangannya
+   ============================================================ */
+@media print{
+  .gate,.rail,.motes,.dock,.music,.lens,.scroll-hint,
+  .count,.count-done,.field,.send,.status,.notes,.share,
+  .copy-btn,.link-out,.hero-grain,.hero-veil,.hero-photo{display:none!important}
+  html,body{background:#fff;color:#000;overflow:visible!important;height:auto!important}
+  [data-anim]{opacity:1!important;transform:none!important;filter:none!important}
+  .verse .w{color:#000!important}
+  .shell{max-width:none;padding-left:0}
+  .band,.closing{padding:1.2rem 0}
+  .band,.card,.beat,.person{break-inside:avoid}
+  .pinwrap{height:auto}
+  .pin{position:static;height:auto;padding:1.5rem 0}
+  .hero{min-height:auto;height:auto;break-after:page}
+  .hero-inner{padding-bottom:1rem}
+  .card{border:1px solid #999;background:#fff}
+}
+</style>
+</head>
+<body class="locked">
+
+<!-- ========== SAMPUL ========== -->
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-label="Sampul undangan">
+  <div class="gate-frame">
+    <p class="eyebrow rise">Undangan Pernikahan</p>
+    <!-- sengaja <p>, bukan <h1>: satu-satunya h1 halaman ada di hero -->
+    <p class="display gate-names rise">Ronald<span class="gate-amp">&amp;</span>Debora</p>
+    <p class="gate-date rise">14 · 11 · 2026</p>
+    <div class="gate-to rise">
+      Kepada Bapak/Ibu/Saudara/i
+      <span class="gate-guest" id="guest">Tamu Undangan</span>
+    </div>
+    <button class="gate-open rise" id="openBtn">Buka Undangan</button>
+  </div>
+</div>
+
+<!-- ========== BENANG TENUN (progress scroll) ========== -->
+<div class="rail" id="rail" aria-hidden="true">
+  <div class="rail-thread"></div>
+  <div class="rail-fill" id="railFill"></div>
+</div>
+
+<div class="motes" id="motes" aria-hidden="true"></div>
+
+<button class="music" id="musicBtn" aria-label="Putar musik latar" aria-pressed="false">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v10.55A4 4 0 1014 17V7h4V3h-6z"/></svg>
+</button>
+<audio id="song" loop preload="none"></audio>
+
+<main>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="mulai">
+    <!-- FOTO UTAMA
+         src        : URL foto. Hapus seluruh <img> ini kalau belum ada foto.
+         --foto-pos : titik fokus, mis. center / center 25% / 60% 40%
+
+         !! src di bawah ini milik weddingmarket.com, untuk PRATINJAU saja.
+            Ganti dengan foto sendiri sebelum undangan dipakai atau dijual. -->
+    <div class="hero-bg" id="heroBg" style="--foto-pos:center 35%">
+      <img class="hero-img" id="heroImg" alt=""
+           src="https://weddingmarket.com/storage/images/artikelidea/5017770cbe9dccf61b22b2515d976f0bf0513d2a.webp"
+           referrerpolicy="no-referrer" fetchpriority="high" decoding="async">
+    </div>
+    <div class="hero-grain"></div>
+    <div class="hero-veil"></div>
+    <div class="hero-photo"></div>
+
+    <div class="hero-top" data-anim="down">
+      <p class="hero-date">Sabtu, 14 November 2026</p>
+      <span class="hero-tick"></span>
+    </div>
+
+    <div class="hero-inner">
+      <p class="hero-marga">Sitorus &nbsp;·&nbsp; Sihombing</p>
+      <h1 class="display hero-names" id="heroNames">Ronald<span class="hero-amp">&amp;</span>Debora</h1>
+      <p data-anim="up" data-delay="300">Atas berkat dan kasih karunia Tuhan Yesus Kristus,<br>kami mengundang Bapak/Ibu/Saudara/i untuk hadir dan memberkati hari bahagia kami.</p>
+    </div>
+    <div class="scroll-hint" aria-hidden="true">Gulir<span></span></div>
+  </section>
+
+  <div class="shell">
+
+    <!-- ========== AYAT — PIN + SCRUB ========== -->
+    <div class="pinwrap">
+      <div class="pin">
+        <div>
+          <p class="verse" id="verse">Karena itu, apa yang telah dipersatukan Allah, tidak boleh diceraikan manusia.</p>
+          <p class="verse-src" data-anim="up">Markus 10:9</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== MEMPELAI ========== -->
+    <section class="band center" id="mempelai">
+      <p class="eyebrow" data-anim="up">Kedua Mempelai</p>
+      <div class="rule"></div>
+
+      <div class="pair">
+        <article class="person" data-anim="left">
+          <div class="portrait"><!-- <img src="foto-ronald.jpg" alt="Ronald"> --></div>
+          <h2 class="display person-name">Ronald Parlindungan</h2>
+          <p class="person-marga">Sitorus</p>
+          <p class="person-meta">
+            <span class="person-of">Putra pertama dari</span>
+            St. Marolop Sitorus<br>&amp; Ny. T. br. Panjaitan
+          </p>
+        </article>
+        <article class="person" data-anim="right" data-delay="180">
+          <div class="portrait"><!-- <img src="foto-debora.jpg" alt="Debora"> --></div>
+          <h2 class="display person-name">Debora Uli Artha</h2>
+          <p class="person-marga">br. Sihombing</p>
+          <p class="person-meta">
+            <span class="person-of">Putri kedua dari</span>
+            Drs. Sahat Sihombing<br>&amp; Ny. R. br. Nainggolan
+          </p>
+        </article>
+      </div>
+
+      <div class="families" data-anim="up">
+        <p>
+          Kami yang berbahagia
+          <strong>Keluarga Besar Sitorus &amp; Sihombing</strong>
+        </p>
+      </div>
+    </section>
+
+    <!-- ========== ACARA ==========
+         data-cal-* dipakai tombol "Tambah ke Kalender" untuk merakit berkas .ics.
+         Jam wajib memakai offset zona (+07:00) supaya benar di HP mana pun. -->
+    <section class="band center" id="acara">
+      <p class="eyebrow" data-anim="up">Rangkaian Acara</p>
+      <div class="rule"></div>
+
+      <div class="card" data-anim="mask"
+           data-cal-title="Martumpol — Ronald &amp; Debora"
+           data-cal-start="2026-11-08T10:00:00+07:00"
+           data-cal-end="2026-11-08T12:00:00+07:00"
+           data-cal-loc="HKBP Sudirman, Jl. Jenderal Sudirman No. 12, Medan"
+           data-cal-file="martumpol">
+        <h2 class="display card-kind">Martumpol</h2>
+        <p class="card-native">Pertunangan di Gereja</p>
+        <p class="card-when">
+          Minggu, 8 November 2026
+          <span class="card-time">10.00 WIB</span>
+        </p>
+        <p class="card-where">HKBP Sudirman</p>
+        <p class="card-addr">Jl. Jenderal Sudirman No. 12, Medan</p>
+        <div class="card-acts">
+          <button type="button" class="link-out cal-link">Tambah ke Kalender</button>
+        </div>
+      </div>
+
+      <div class="card" data-anim="mask" data-delay="150"
+           data-cal-title="Pemberkatan Pernikahan Ronald &amp; Debora"
+           data-cal-start="2026-11-14T09:00:00+07:00"
+           data-cal-end="2026-11-14T11:00:00+07:00"
+           data-cal-loc="HKBP Sudirman, Jl. Jenderal Sudirman No. 12, Medan"
+           data-cal-file="pemberkatan">
+        <h2 class="display card-kind">Pemberkatan Pernikahan</h2>
+        <p class="card-native">Pamasu-masuon</p>
+        <p class="card-when">
+          Sabtu, 14 November 2026
+          <span class="card-time">09.00 — 11.00 WIB</span>
+        </p>
+        <p class="card-where">HKBP Sudirman</p>
+        <p class="card-addr">Jl. Jenderal Sudirman No. 12, Medan</p>
+        <div class="card-acts">
+          <a class="link-out" href="https://maps.google.com" target="_blank" rel="noopener">Lihat Peta</a>
+          <button type="button" class="link-out cal-link">Tambah ke Kalender</button>
+        </div>
+      </div>
+
+      <div class="card" data-anim="mask" data-delay="300"
+           data-cal-title="Pesta Unjuk — Ronald &amp; Debora"
+           data-cal-start="2026-11-14T12:00:00+07:00"
+           data-cal-end="2026-11-14T17:00:00+07:00"
+           data-cal-loc="Wisma Gorga Convention Hall, Jl. Sisingamangaraja No. 88, Medan"
+           data-cal-file="pesta-unjuk">
+        <h2 class="display card-kind">Resepsi Adat</h2>
+        <p class="card-native">Pesta Unjuk</p>
+        <p class="card-when">
+          Sabtu, 14 November 2026
+          <span class="card-time">12.00 — 17.00 WIB</span>
+        </p>
+        <p class="card-where">Wisma Gorga Convention Hall</p>
+        <p class="card-addr">Jl. Sisingamangaraja No. 88, Medan</p>
+        <div class="card-acts">
+          <a class="link-out" href="https://maps.google.com" target="_blank" rel="noopener">Lihat Peta</a>
+          <button type="button" class="link-out cal-link">Tambah ke Kalender</button>
+        </div>
+      </div>
+
+      <div class="count" id="count" data-anim="up" data-delay="120">
+        <div class="count-cell"><div class="count-num" id="dd">00</div><div class="count-lab">Hari</div></div>
+        <div class="count-cell"><div class="count-num" id="hh">00</div><div class="count-lab">Jam</div></div>
+        <div class="count-cell"><div class="count-num" id="mm">00</div><div class="count-lab">Menit</div></div>
+        <div class="count-cell"><div class="count-num" id="ss">00</div><div class="count-lab">Detik</div></div>
+      </div>
+      <p class="count-done" id="countDone">Hari yang kami nantikan telah tiba.<br>Horas!</p>
+    </section>
+
+    <!-- ========== DALIHAN NA TOLU ========== -->
+    <section class="band" id="adat">
+      <div class="center">
+        <p class="eyebrow" data-anim="up">Dalihan Na Tolu</p>
+        <div class="rule"></div>
+        <p data-anim="up">Tiga tungku penyangga yang menuntun kami dalam menjalani hidup berkeluarga.</p>
+      </div>
+      <div class="tolu">
+        <div class="tolu-item" data-anim="left"><b>Somba marhula-hula</b><span>Hormat kepada keluarga pihak istri</span></div>
+        <div class="tolu-item" data-anim="left" data-delay="140"><b>Elek marboru</b><span>Lemah lembut kepada pihak saudara perempuan</span></div>
+        <div class="tolu-item" data-anim="left" data-delay="280"><b>Manat mardongan tubu</b><span>Berhati-hati kepada teman semarga</span></div>
+      </div>
+    </section>
+
+    <!-- ========== CERITA ========== -->
+    <section class="band" id="cerita">
+      <div class="center">
+        <p class="eyebrow" data-anim="up">Perjalanan Kami</p>
+        <div class="rule"></div>
+      </div>
+      <div class="story">
+        <div class="beat" data-anim="left">
+          <p class="beat-year">2019</p>
+          <h3 class="beat-head">Paduan suara gereja</h3>
+          <p class="beat-body">Bertemu saat latihan koor Natal, berdiri di baris yang bersebelahan.</p>
+        </div>
+        <div class="beat" data-anim="left" data-delay="150">
+          <p class="beat-year">2023</p>
+          <h3 class="beat-head">Bertemu keluarga</h3>
+          <p class="beat-body">Perjalanan pulang ke Balige, memperkenalkan diri kepada kedua keluarga besar.</p>
+        </div>
+        <div class="beat" data-anim="left" data-delay="300">
+          <p class="beat-year">2026</p>
+          <h3 class="beat-head">Melangkah bersama</h3>
+          <p class="beat-body">Dengan restu orang tua dan berkat Tuhan, kami memulai hidup baru.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== GALERI ==========
+         Begitu <img> dipasang di dalam .shot, JS otomatis mengaktifkan
+         lightbox untuk slot itu. Slot kosong tetap jadi placeholder. -->
+    <section class="band" id="galeri">
+      <div class="center">
+        <p class="eyebrow" data-anim="up">Galeri</p>
+        <div class="rule"></div>
+      </div>
+      <div class="grid">
+        <figure class="shot" data-anim="zoom"></figure>
+        <figure class="shot" data-anim="zoom" data-delay="120"></figure>
+        <figure class="shot" data-anim="blur" data-delay="240"></figure>
+        <figure class="shot" data-anim="zoom" data-delay="120"></figure>
+        <figure class="shot" data-anim="zoom" data-delay="240"></figure>
+      </div>
+    </section>
+
+    <!-- ========== UCAPAN ========== -->
+    <section class="band" id="ucapan">
+      <div class="center">
+        <p class="eyebrow" data-anim="up">Ucapan &amp; Konfirmasi</p>
+        <div class="rule"></div>
+      </div>
+      <div data-anim="up">
+        <div class="field">
+          <label for="nm">Nama</label>
+          <input id="nm" type="text" placeholder="Nama Anda" maxlength="80" autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="at">Kehadiran</label>
+          <select id="at">
+            <option value="Hadir">Hadir</option>
+            <option value="Masih ragu">Masih ragu</option>
+            <option value="Berhalangan">Berhalangan</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="ms">Ucapan</label>
+          <textarea id="ms" placeholder="Tulis doa dan ucapan Anda" maxlength="500"></textarea>
+        </div>
+
+        <!-- jebakan bot — biarkan kosong, tamu tidak akan pernah melihatnya -->
+        <div class="hp" aria-hidden="true">
+          <label for="hp">Jangan diisi</label>
+          <input id="hp" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <button class="send" id="sendBtn">Kirim Ucapan</button>
+        <p class="status" id="status" role="status" aria-live="polite"></p>
+      </div>
+      <div class="notes" id="notes"></div>
+    </section>
+
+    <!-- ========== AMPLOP ========== -->
+    <section class="band center" id="hadiah">
+      <p class="eyebrow" data-anim="up">Amplop Digital</p>
+      <div class="rule"></div>
+      <p data-anim="up">Kehadiran dan doa Bapak/Ibu/Saudara/i sudah lebih dari cukup. Bila ingin memberi tanda kasih, silakan gunakan rekening berikut.</p>
+
+      <div class="amplop" data-anim="up" data-delay="150">
+
+        <!-- --bank = warna merek bank. BCA #0060AF · Mandiri #003D79
+             · BNI #F15A22 · BRI #00529C · Permata #005CA9 -->
+        <div class="bank" style="--bank:#0060AF">
+
+          <div class="bank-logo">
+            <!-- taruh logo resmi bank di sini, mis:
+                 <img src="logo-bca.png" alt="BCA">
+                 tanpa gambar, wordmark di bawah ini yang tampil -->
+            <span class="bank-mark">BCA</span>
+          </div>
+
+          <p class="bank-owner">Debora Uli Artha br. Sihombing</p>
+          <p class="bank-no" data-no="0123456789">0123456789</p>
+
+          <button class="copy-btn" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8 3h9a2 2 0 012 2v11h-2V5H8V3z"/>
+              <path d="M5 7h9a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V9a2 2 0 012-2zm0 2v10h9V9H5z"/>
+            </svg>
+            <span aria-live="polite">Copy No. Rekening</span>
+          </button>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PENUTUP ========== -->
+    <section class="closing">
+      <p data-anim="up">Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.</p>
+      <h2 class="closing-horas" data-anim="zoom">Horas!</h2>
+      <h3 class="display closing-names" data-anim="up">Ronald &amp; Debora</h3>
+      <div class="rule"></div>
+      <p class="eyebrow" data-anim="up" data-delay="200">Mauliate</p>
+
+      <div class="share" data-anim="up" data-delay="300">
+        <button type="button" id="shareBtn">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 16.1a3 3 0 00-2 .8l-7.1-4.1a3 3 0 000-1.6L16 7.1a3 3 0 10-1-2.1c0 .3 0 .5.1.8L8 9.9a3 3 0 100 4.2l7.1 4.1c-.1.3-.1.5-.1.8a3 3 0 103-3z"/></svg>
+          <span>Bagikan</span>
+        </button>
+        <button type="button" id="linkBtn">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.9 12a3.1 3.1 0 013.1-3.1h4V7H7a5 5 0 000 10h4v-1.9H7A3.1 3.1 0 013.9 12zM8 13h8v-2H8v2zm9-6h-4v1.9h4a3.1 3.1 0 010 6.2h-4V17h4a5 5 0 000-10z"/></svg>
+          <span aria-live="polite">Salin Tautan</span>
+        </button>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<!-- ========== DOK NAVIGASI ========== -->
+<nav class="dock" id="dock" aria-label="Navigasi undangan">
+  <div class="dock-in">
+    <a href="#mulai">Awal</a>
+    <a href="#mempelai">Mempelai</a>
+    <a href="#acara">Acara</a>
+    <a href="#adat">Adat</a>
+    <a href="#cerita">Cerita</a>
+    <a href="#galeri">Galeri</a>
+    <a href="#ucapan">Ucapan</a>
+    <a href="#hadiah">Hadiah</a>
+  </div>
+</nav>
+
+<!-- ========== LIGHTBOX GALERI ========== -->
+<div class="lens" id="lens" role="dialog" aria-modal="true" aria-label="Pratinjau foto">
+  <button class="lens-shut" id="lensShut" type="button" aria-label="Tutup pratinjau">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 6.4 17.6 5 12 10.6 6.4 5 5 6.4 10.6 12 5 17.6 6.4 19 12 13.4 17.6 19 19 17.6 13.4 12z"/></svg>
+  </button>
+  <button class="lens-prev" id="lensPrev" type="button" aria-label="Foto sebelumnya">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.4 4.6 8 12l7.4 7.4 1.4-1.4L10.8 12l6-6z"/></svg>
+  </button>
+  <img class="lens-img" id="lensImg" alt="">
+  <button class="lens-next" id="lensNext" type="button" aria-label="Foto berikutnya">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 4.6 7.2 6l6 6-6 6 1.4 1.4L16 12z"/></svg>
+  </button>
+  <p class="lens-count" id="lensCount"></p>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ============================================================
+     KONFIG — satu-satunya bagian JS yang perlu diubah per klien
+     ============================================================ */
+  var KONFIG = {
+    tanggal  : '2026-11-14T09:00:00+07:00',  /* hari-H, zona +07:00 */
+    sheetUrl : '',                           /* URL Apps Script; kosong = mode demo */
+    judul    : 'Ronald & Debora — Undangan Pernikahan',
+    bagikan  : 'Dengan sukacita kami mengundang Bapak/Ibu/Saudara/i di hari pernikahan kami.'
+  };
+
+  var mqReduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var reduced  = mqReduce.matches;
+  var HARI_H   = new Date(KONFIG.tanggal);
+
+  /* ---------- rujukan elemen ---------- */
+  var gate      = document.getElementById('gate');
+  var konten    = document.querySelector('main');
+  var rail      = document.getElementById('rail');
+  var dock      = document.getElementById('dock');
+  var musicBtn  = document.getElementById('musicBtn');
+  var song      = document.getElementById('song');
+  var heroNames = document.getElementById('heroNames');
+  var heroAnims = [];
+  var io = null;
+
+  /* Tombol musik hanya berguna kalau <audio> punya src.
+     Tanpa src tombolnya dibuang, bukan sekadar disembunyikan —
+     elemen dengan opacity:0 masih bisa difokus lewat Tab. */
+  var adaLagu = !!song.getAttribute('src');
+  if (!adaLagu) musicBtn.remove();
+
+  /* ============================================================
+     SAMPUL — dipasang paling awal.
+     Kalau ada bagian dekoratif di bawah yang gagal, undangan tetap
+     bisa dibuka; itu sebabnya blok ini tidak ditaruh di akhir berkas.
+     ============================================================ */
+  var latar = [konten, dock, adaLagu ? musicBtn : null];
+
+  function kunciLatar(kunci){
+    latar.forEach(function(el){
+      if (!el || !el.isConnected) return;
+      if (kunci) el.setAttribute('inert', ''); else el.removeAttribute('inert');
+    });
+  }
+  kunciLatar(true);   /* selama sampul tertutup, Tab tidak boleh nyasar ke belakangnya */
+
+  document.getElementById('openBtn').addEventListener('click', function(){
+    gate.classList.add('open');
+    document.body.classList.remove('locked');
+    kunciLatar(false);
+    window.scrollTo(0, 0);
+
+    setTimeout(function(){
+      heroNames.classList.add('lit');
+      if (io) heroAnims.forEach(function(el){ io.observe(el); });
+      rail.classList.add('on');
+      dock.classList.add('on');
+      if (adaLagu) {
+        musicBtn.classList.add('on');
+        song.play().then(function(){ setMusik(true); }).catch(function(){});
+      }
+      frame();
+    }, 420);
+
+    setTimeout(function(){ gate.remove(); }, 1400);
+  }, { once: true });
+
+  /* ---------- nama tamu: ?kepada=Budi%20Sitorus ----------
+     URLSearchParams.get() SUDAH mendekode. Mendekode ulang akan
+     melempar URIError begitu nama mengandung '%' dan mematikan
+     seluruh skrip di bawahnya. */
+  var tamu = new URLSearchParams(location.search).get('kepada');
+  var nmInput = document.getElementById('nm');
+  if (tamu) {
+    document.getElementById('guest').textContent = tamu;
+    if (nmInput) nmInput.value = tamu;   /* sekalian isi awal form RSVP */
+  }
+
+  /* ---------- foto utama ----------
+     Penanda "foto utama" baru dibuang kalau gambarnya benar-benar termuat,
+     supaya hero tidak pernah kosong tanpa penjelasan. */
+  (function(){
+    var img   = document.getElementById('heroImg');
+    var hero  = document.querySelector('.hero');
+    var tanda = document.querySelector('.hero-photo');
+    if (!img || !img.getAttribute('src')) return;
+
+    var alamat = img.src;
+
+    function sukses(){
+      img.classList.add('ok');
+      hero.classList.add('has-foto');
+      if (tanda) tanda.remove();
+    }
+    function gagal(){
+      img.remove();
+      console.warn('Foto hero gagal dimuat: ' + alamat +
+        ' — kemungkinan proteksi hotlink di server sumber, CSP halaman, atau URL salah. ' +
+        'Paling aman: unduh lalu host fotonya sendiri.');
+    }
+
+    if (img.complete) { img.naturalWidth ? sukses() : gagal(); }
+    else { img.addEventListener('load', sukses); img.addEventListener('error', gagal); }
+  })();
+
+  /* ---------- pecah nama hero jadi kata ---------- */
+  (function(){
+    var out = '';
+    heroNames.childNodes.forEach(function(n){
+      if (n.nodeType === 3) {
+        var t = n.textContent.trim();
+        if (t) out += '<span class="word">' + t + '</span>';
+      } else {
+        out += '<span class="word">' + n.outerHTML + '</span>';
+      }
+    });
+    heroNames.innerHTML = out;
+    heroNames.querySelectorAll('.word').forEach(function(w, i){
+      w.style.transitionDelay = (0.25 + i * 0.16) + 's';
+    });
+  })();
+
+  /* ---------- reveal saat scroll ---------- */
+  io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (!e.isIntersecting) return;
+      var el = e.target;
+      var d = parseInt(el.dataset.delay || 0, 10);
+      setTimeout(function(){ el.classList.add('seen'); }, reduced ? 0 : d);
+      io.unobserve(el);
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+  document.querySelectorAll('[data-anim]').forEach(function(el){
+    if (el.closest('.hero')) heroAnims.push(el);   /* tunggu sampul dibuka */
+    else io.observe(el);
+  });
+
+  /* ---------- ayat: scrub per kata ---------- */
+  var verse = document.getElementById('verse');
+  verse.innerHTML = verse.textContent.trim().split(/\s+/)
+    .map(function(w){ return '<span class="w">' + w + '</span>'; }).join(' ');
+  var vWords = verse.querySelectorAll('.w');
+  var pinwrap = document.querySelector('.pinwrap');
+
+  /* ---------- benang tenun + motif gorga ---------- */
+  var railFill = document.getElementById('railFill');
+  var AT = [0.09, 0.21, 0.33, 0.45, 0.57, 0.69, 0.81, 0.92];
+  var GORGA = '<svg viewBox="0 0 24 24">' +
+              '<path class="o" d="M12 1.5 L22.5 12 L12 22.5 L1.5 12 Z"/>' +
+              '<path class="i" d="M12 7 L17 12 L12 17 L7 12 Z"/></svg>';
+  var motifs = AT.map(function(p){
+    var g = document.createElement('div');
+    g.className = 'gorga';
+    g.style.top = (p * 100) + '%';
+    g.innerHTML = GORGA;
+    rail.appendChild(g);
+    return g;
+  });
+
+  /* ---------- satu loop rAF untuk semua efek scroll ---------- */
+  var heroBg = document.getElementById('heroBg');
+  var links = dock.querySelectorAll('a');
+  var marks = Array.prototype.map.call(links, function(a){
+    return document.querySelector(a.getAttribute('href'));
+  });
+  var ticking = false;
+
+  function frame(){
+    ticking = false;
+    var y = window.scrollY;
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var prog = max > 0 ? Math.min(y / max, 1) : 0;
+
+    railFill.style.transform = 'translateX(-50%) scaleY(' + prog + ')';
+    motifs.forEach(function(g, i){ g.classList.toggle('woven', prog >= AT[i] - 0.01); });
+
+    if (!reduced && y < window.innerHeight * 1.2) {
+      heroBg.style.transform = 'translate3d(0,' + (y * 0.32) + 'px,0) scale(1.05)';
+    }
+
+    if (!reduced) {
+      var r = pinwrap.getBoundingClientRect();
+      var span = r.height - window.innerHeight;
+      var p = span > 0 ? (-r.top) / span : 0;
+      p = Math.max(0, Math.min(1, (p - 0.08) / 0.62));
+      var lit = Math.round(p * vWords.length);
+      vWords.forEach(function(w, i){ w.classList.toggle('hot', i < lit); });
+    } else {
+      vWords.forEach(function(w){ w.classList.add('hot'); });
+    }
+
+    var cur = 0;
+    marks.forEach(function(sec, i){
+      if (sec && sec.getBoundingClientRect().top <= window.innerHeight * 0.45) cur = i;
+    });
+    links.forEach(function(a, i){ a.classList.toggle('here', i === cur); });
+  }
+
+  window.addEventListener('scroll', function(){
+    if (!ticking) { requestAnimationFrame(frame); ticking = true; }
+  }, { passive: true });
+  window.addEventListener('resize', frame, { passive: true });
+
+  /* setelan gerak bisa diubah user di tengah sesi — ikuti perubahannya */
+  var onMQ = function(e){ reduced = e.matches; frame(); };
+  if (mqReduce.addEventListener) mqReduce.addEventListener('change', onMQ);
+  else if (mqReduce.addListener) mqReduce.addListener(onMQ);
+
+  /* ---------- hitung mundur ---------- */
+  var pad = function(n){ return String(Math.max(0, n)).padStart(2, '0'); };
+  var countEl = document.getElementById('count');
+  var doneEl  = document.getElementById('countDone');
+  var c = { dd: document.getElementById('dd'), hh: document.getElementById('hh'),
+            mm: document.getElementById('mm'), ss: document.getElementById('ss') };
+  var timer = null;
+
+  function tick(){
+    var gap = HARI_H - Date.now();
+    if (gap <= 0) {
+      gap = 0;
+      if (timer) { clearInterval(timer); timer = null; }   /* jangan tick selamanya */
+      countEl.classList.add('done');
+      doneEl.classList.add('on');
+    }
+    var s = Math.floor(gap / 1000);
+    c.dd.textContent = pad(Math.floor(s / 86400));
+    c.hh.textContent = pad(Math.floor(s % 86400 / 3600));
+    c.mm.textContent = pad(Math.floor(s % 3600 / 60));
+    c.ss.textContent = pad(s % 60);
+  }
+  tick();
+  if (HARI_H - Date.now() > 0) timer = setInterval(tick, 1000);
+
+  /* ---------- serbuk halus ---------- */
+  if (!reduced) {
+    var motes = document.getElementById('motes');
+    for (var i = 0; i < 12; i++) {
+      var m = document.createElement('div');
+      m.className = 'mote';
+      m.style.left = (Math.random() * 96) + '%';
+      m.style.animationDuration = (13 + Math.random() * 13) + 's';
+      m.style.animationDelay = (-Math.random() * 24) + 's';
+      motes.appendChild(m);
+    }
+  }
+
+  /* ============================================================
+     UCAPAN — tersimpan ke Google Sheet lewat Apps Script.
+     Kosongkan KONFIG.sheetUrl untuk mode demo (memori sesi saja).
+     ============================================================ */
+  var notesEl  = document.getElementById('notes');
+  var statusEl = document.getElementById('status');
+  var sendBtn  = document.getElementById('sendBtn');
+  var hpInput  = document.getElementById('hp');
+  var notes = [];
+
+  function esc(v){
+    return String(v).replace(/[&<>"']/g, function(ch){
+      return { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[ch];
+    });
+  }
+
+  function kabar(pesan, buruk){
+    statusEl.textContent = pesan || '';
+    statusEl.classList.toggle('bad', !!buruk);
+  }
+
+  function render(fresh){
+    if (!notes.length) {
+      notesEl.innerHTML = '<p class="notes-empty">Belum ada ucapan. Jadilah yang pertama.</p>';
+      return;
+    }
+    notesEl.innerHTML = notes.map(function(n, i){
+      return '<div class="note' + (fresh && i === notes.length - 1 ? ' fresh' : '') + '">' +
+             '<span class="note-from">' + esc(n.nama) + '</span>' +
+             '<span class="note-tag">' + esc(n.hadir) + '</span>' +
+             '<p class="note-body">' + esc(n.pesan) + '</p></div>';
+    }).join('');
+    /* hanya lompat ke bawah untuk ucapan yang baru dikirim —
+       pada muat awal, tamu harus melihat ucapan dari yang paling atas */
+    if (fresh) notesEl.scrollTop = notesEl.scrollHeight;
+  }
+
+  /* ---- muat ucapan yang sudah ada ---- */
+  if (KONFIG.sheetUrl) {
+    kabar('Memuat ucapan…');
+    fetch(KONFIG.sheetUrl)
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        notes = Array.isArray(data) ? data : (data.data || []);
+        render(false); kabar('');
+      })
+      .catch(function(){
+        render(false);
+        kabar('Ucapan lama gagal dimuat, tapi kamu tetap bisa mengirim.', true);
+      });
+  } else {
+    notes = [
+      { nama:'Kel. Op. Tigor Simanjuntak', hadir:'Hadir',
+        pesan:'Horas! Sai dilehon Tuhan ma hahipason di hamu na dua.' },
+      { nama:'Rina br. Hutagalung', hadir:'Berhalangan',
+        pesan:'Selamat menempuh hidup baru. Tuhan Yesus memberkati keluarga baru kalian.' }
+    ];
+    render(false);
+  }
+
+  /* ---- kirim ---- */
+  sendBtn.addEventListener('click', function(){
+    var at = document.getElementById('at');
+    var ms = document.getElementById('ms');
+
+    /* jebakan bot terisi → pura-pura berhasil, jangan dikirim.
+       Bot tidak tahu gagal, jadi tidak mencoba lagi. */
+    if (hpInput && hpInput.value) {
+      kabar('Terima kasih, ucapanmu sudah kami terima.');
+      return;
+    }
+
+    if (!nmInput.value.trim()) {
+      nmInput.focus();
+      kabar('Nama belum diisi.', true);
+      return;
+    }
+    if (sendBtn.disabled) return;
+
+    var entri = {
+      nama : nmInput.value.trim(),
+      hadir: at.value,
+      pesan: ms.value.trim() || '—'
+    };
+
+    function sukses(){
+      notes.push(entri);
+      render(true);
+      nmInput.value = ''; ms.value = '';
+      sendBtn.disabled = false;
+      sendBtn.textContent = 'Kirim Ucapan';
+      kabar('Terima kasih, ucapanmu sudah kami terima.');
+      setTimeout(function(){ kabar(''); }, 4000);
+    }
+
+    if (!KONFIG.sheetUrl) { sukses(); return; }
+
+    sendBtn.disabled = true;
+    sendBtn.textContent = 'Mengirim…';
+    kabar('');
+
+    /* Content-Type text/plain menghindari preflight CORS ke Apps Script */
+    fetch(KONFIG.sheetUrl, {
+      method : 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body   : JSON.stringify(entri)
+    })
+      .then(function(r){ if (!r.ok) throw new Error(); return r.json(); })
+      .then(sukses)
+      .catch(function(){
+        sendBtn.disabled = false;
+        sendBtn.textContent = 'Kirim Ucapan';
+        kabar('Gagal mengirim. Periksa koneksi, lalu coba lagi.', true);
+      });
+  });
+
+  /* ---------- amplop: logo + salin nomor ---------- */
+  document.querySelectorAll('.bank').forEach(function(card){
+    var img = card.querySelector('.bank-logo img');
+    if (img && img.getAttribute('src')) {
+      card.classList.add('has-logo');
+      img.addEventListener('error', function(){ card.classList.remove('has-logo'); });
+    }
+  });
+
+  document.querySelectorAll('.copy-btn').forEach(function(btn){
+    var label = btn.querySelector('span');
+    var teks = label.textContent;
+    btn.addEventListener('click', function(){
+      var src = btn.closest('.bank').querySelector('[data-no]');
+      if (!src) return;
+      if (navigator.clipboard) navigator.clipboard.writeText(src.dataset.no).catch(function(){});
+      label.textContent = 'Nomor rekening tersalin';
+      setTimeout(function(){ label.textContent = teks; }, 1800);
+    });
+  });
+
+  /* ---------- musik ---------- */
+  function setMusik(jalan){
+    if (!adaLagu) return;
+    musicBtn.classList.toggle('playing', jalan);
+    musicBtn.setAttribute('aria-pressed', jalan ? 'true' : 'false');
+    musicBtn.setAttribute('aria-label', jalan ? 'Jeda musik latar' : 'Putar musik latar');
+  }
+  if (adaLagu) {
+    musicBtn.addEventListener('click', function(){
+      if (song.paused) song.play().catch(function(){});
+      else song.pause();
+    });
+    song.addEventListener('play',  function(){ setMusik(true); });
+    song.addEventListener('pause', function(){ setMusik(false); });
+  }
+
+  /* ============================================================
+     LIGHTBOX GALERI — aktif hanya untuk .shot yang sudah berisi <img>
+     ============================================================ */
+  (function(){
+    var lens     = document.getElementById('lens');
+    var lensImg  = document.getElementById('lensImg');
+    var lensCnt  = document.getElementById('lensCount');
+    var lensShut = document.getElementById('lensShut');
+    var lensPrev = document.getElementById('lensPrev');
+    var lensNext = document.getElementById('lensNext');
+    var galeri = [], idx = 0, pemicu = null;
+
+    document.querySelectorAll('.shot').forEach(function(shot){
+      var img = shot.querySelector('img');
+      if (!img) return;                       /* slot masih placeholder */
+      var n = galeri.push(img) - 1;
+      shot.classList.add('live');
+      shot.setAttribute('role', 'button');
+      shot.setAttribute('tabindex', '0');
+      shot.setAttribute('aria-label', 'Perbesar foto ' + (n + 1));
+      shot.addEventListener('click', function(){ buka(n, shot); });
+      shot.addEventListener('keydown', function(e){
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); buka(n, shot); }
+      });
+    });
+
+    if (!galeri.length) { lens.remove(); return; }
+    if (galeri.length < 2) { lensPrev.remove(); lensNext.remove(); }
+
+    function tampil(i){
+      idx = (i + galeri.length) % galeri.length;
+      var img = galeri[idx];
+      lensImg.src = img.currentSrc || img.src;
+      lensImg.alt = img.alt || '';
+      lensCnt.textContent = (idx + 1) + ' / ' + galeri.length;
+    }
+    function buka(i, dari){
+      pemicu = dari;
+      tampil(i);
+      lens.classList.add('on');
+      document.body.classList.add('locked');
+      kunciLatar(true);
+      lensShut.focus();
+    }
+    function tutup(){
+      lens.classList.remove('on');
+      document.body.classList.remove('locked');
+      kunciLatar(false);
+      lensImg.removeAttribute('src');
+      if (pemicu) pemicu.focus();
+    }
+
+    lensShut.addEventListener('click', tutup);
+    if (lensPrev.isConnected) lensPrev.addEventListener('click', function(){ tampil(idx - 1); });
+    if (lensNext.isConnected) lensNext.addEventListener('click', function(){ tampil(idx + 1); });
+    lens.addEventListener('click', function(e){ if (e.target === lens) tutup(); });
+
+    document.addEventListener('keydown', function(e){
+      if (!lens.classList.contains('on')) return;
+      if (e.key === 'Escape') tutup();
+      else if (e.key === 'ArrowLeft')  tampil(idx - 1);
+      else if (e.key === 'ArrowRight') tampil(idx + 1);
+    });
+  })();
+
+  /* ============================================================
+     TAMBAH KE KALENDER — berkas .ics dirakit di browser (RFC 5545)
+     ============================================================ */
+  function icsWaktu(iso){
+    var d = new Date(iso);
+    if (isNaN(d.getTime())) return '';
+    return d.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+  }
+  function icsTeks(v){
+    return String(v || '')
+      .replace(/\\/g, '\\\\').replace(/;/g, '\\;')
+      .replace(/,/g, '\\,').replace(/\n/g, '\\n');
+  }
+  function icsLipat(baris){
+    /* RFC 5545: satu baris maksimal 75 oktet, sambungannya diawali spasi */
+    var out = [];
+    baris.forEach(function(b){
+      while (b.length > 74) { out.push(b.slice(0, 74)); b = ' ' + b.slice(74); }
+      out.push(b);
+    });
+    return out.join('\r\n');
+  }
+
+  document.querySelectorAll('[data-cal-start]').forEach(function(kartu, i){
+    var tombol = kartu.querySelector('.cal-link');
+    if (!tombol) return;
+    tombol.addEventListener('click', function(){
+      var mulai = icsWaktu(kartu.dataset.calStart);
+      if (!mulai) return;
+
+      var isi = icsLipat([
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//Undangan Pernikahan//ID',
+        'CALSCALE:GREGORIAN',
+        'METHOD:PUBLISH',
+        'BEGIN:VEVENT',
+        'UID:' + i + '-' + Date.now() + '@undangan',
+        'DTSTAMP:' + icsWaktu(new Date().toISOString()),
+        'DTSTART:' + mulai,
+        'DTEND:'   + (icsWaktu(kartu.dataset.calEnd) || mulai),
+        'SUMMARY:' + icsTeks(kartu.dataset.calTitle),
+        'LOCATION:' + icsTeks(kartu.dataset.calLoc),
+        'DESCRIPTION:' + icsTeks(KONFIG.bagikan + ' ' + location.href),
+        'END:VEVENT',
+        'END:VCALENDAR'
+      ]);
+
+      var blob = new Blob([isi], { type: 'text/calendar;charset=utf-8' });
+      var url  = URL.createObjectURL(blob);
+      var a    = document.createElement('a');
+      a.href = url;
+      a.download = (kartu.dataset.calFile || 'acara') + '.ics';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(function(){ URL.revokeObjectURL(url); }, 2000);
+    });
+  });
+
+  /* ============================================================
+     BERBAGI — Web Share API bila ada, kalau tidak jatuh ke WhatsApp
+     ============================================================ */
+  (function(){
+    var bagi  = document.getElementById('shareBtn');
+    var salin = document.getElementById('linkBtn');
+
+    bagi.addEventListener('click', function(){
+      var data = { title: KONFIG.judul, text: KONFIG.bagikan, url: location.href };
+      if (navigator.share) { navigator.share(data).catch(function(){}); return; }
+      window.open(
+        'https://wa.me/?text=' + encodeURIComponent(KONFIG.bagikan + '\n' + location.href),
+        '_blank', 'noopener'
+      );
+    });
+
+    salin.addEventListener('click', function(){
+      var label = salin.querySelector('span');
+      var teks = label.textContent;
+      if (navigator.clipboard) navigator.clipboard.writeText(location.href).catch(function(){});
+      label.textContent = 'Tautan tersalin';
+      setTimeout(function(){ label.textContent = teks; }, 1800);
+    });
+  })();
+
+})();
+</script>
+</body>
+</html>
